@@ -1,0 +1,105 @@
+
+All the test cases cover in below Test Script
+
+1. Verify that a user with valid credentials can successfully log in and access the system.
+ - If we are fill all valid data in that parameters then click on Login btn can log in to system
+
+2. Validate that an error message is displayed when attempting to log in with invalid credentials.
+ - If we are fill invalid data in that parameters & click on Login btn then show error msg on screen.
+
+4. Test that the 'Login' button is disabled when both username and password fields are empty.
+ - If we are not fill any data in field that time Logn btn disabled
+
+5. Confirm that the 'Login' button is enabled only when both username and password fields are filled with valid input.
+ - If we are fill all valid data in that parameters then click on Login btn can log in to system
+
+6. Verify that clicking the 'Forgot Password' link redirects the user to the password recovery page.
+ - If we entered UN & click on forgot PSW link then automatically redirect in PSW recovery page
+
+
+7. Validate the password recovery functionality by following these steps:
+ - In that scenarios find the locate the elements of all Feild/Links/Btn through Locators types then perform on action
+  a. Click the 'Forgot Password' link. 
+  Like that = 
+              driver.findElement(By.xpath("//input[@type='text']").Click();
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+ -POM Class
+
+public class LoginPage 
+{
+	
+	  @FindBy(xpath=" ")  private WebElement UN;
+	  @FindBy(xpath=" ")  private WebElement PSW;
+	  @FindBy(xpath=" ")  private WebElement Loginbtn;
+          @FindBy(xpath=" ")  private WebElement FrgtPWS;
+	  
+	  //Use Constructor
+	  
+	  public LoginPage(WebDriver driver)
+	  {
+		  PageFactory.initElements(driver, this);
+	  }
+	  
+	  //Utilize Variables
+	   
+	  public void enterUserID()
+	  {
+		  UN.sendKeys(" ");
+	  }
+	  
+	  public void enterPassword()
+	  {
+		  PSW.sendKeys(" ");
+	  }
+	  
+	  public void ClickLoginbtn()
+	  {
+		  Loginbtn.click(" ");
+	  }
+
+          public void ClickFrgtPWS()
+	  {
+		  Loginbn.click(" ");
+	  }
+
+------------------------------------------------------------------------------------------------------------------------
+
+    -fetch data from Excelsheet
+
+           public static String getTD(int RowIndex, int cellIndex) 
+	    {
+	    	FileInputStream file=new FileInputStream("Path of Excel sheet");
+	    	
+	    	Sheet Sh=WorkbookFactory.create(file).getSheet("Sheet1");
+	    	
+	    	String value2=Sh.getRow(RowIndex).getCell(cellIndex).getStringCellValue();
+	    	
+	    	return value2;
+
+            }
+-------------------------------------------------------------------------------------------------------------------------
+
+     -Call the Methods(Test Class)
+    
+            public void InitializeBrowser()
+            {
+                System.setProperty("webdriver.chrome.driver","C:\\selenium\\chromedriver_win32\\chromedriver.exe");
+		
+		WebDriver driver=new ChromeDriver();
+		
+		driver.get("URL");
+		
+		//Create Object of POM2 Class
+		LoginPage login=new LoginPage(driver);
+		login.enterUserID();
+		login.enterPassword();
+		login.ClickLoginbtn();
+		login.ClickFrgtPWS();
+             }
+
+
+
+
+
+
